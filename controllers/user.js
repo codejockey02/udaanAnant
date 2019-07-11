@@ -1,7 +1,7 @@
 const express = require('express');
 const randomgen = require('randomstring');
 
-
+const register = require('./utils/registerUser');
 const user = require('../schemas/users');
 
 const router = new express.Router();
@@ -9,10 +9,10 @@ const router = new express.Router();
 router.post('/add-worker', async (req, res) => {
     const {
         id,
-        username,
+        name,
         password,
     } = req.body;
-    register.register(id, username, password)
+    register.register(id, name, password)
         .then(result => res.json({
             message: result.message
         }))
@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
     let usercheck;
     try {
         usercheck = await user.findOne({
-            _id,
+            _id: id,
         }, {
             password: 1,
         });
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
     }
     const token = randomgen.generate();
     await user.updateOne({
-        _id,
+        _id: id,
     }, {
         $set: {
             token,
