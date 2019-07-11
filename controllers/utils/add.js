@@ -1,7 +1,7 @@
-const db = require('../../schemas/assets');
+const datab = require('../../schemas/assets');
 
 exports.addTask = async (id, assetname) => {
-    const newAsset = new db({
+    const newAsset = new datab({
         _id: id,
         asset_name: assetname,
     }, {
@@ -9,7 +9,7 @@ exports.addTask = async (id, assetname) => {
     });
     let check;
     try {
-        check = await db.findOne({
+        check = await datab.findOne({
             asset_name: assetname,
         }, {
             _id: 1

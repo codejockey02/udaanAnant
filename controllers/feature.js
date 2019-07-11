@@ -9,7 +9,7 @@ const addAst = require('./utils/add');
 
 const router = new express.Router();
 
-router.post('/addasset', async (req, res) => {
+router.post('/add-asset', async (req, res) => {
     const {
         assetname,
         id
@@ -23,7 +23,7 @@ router.post('/addasset', async (req, res) => {
         }));
 });
 
-router.post('/addtask', async (req, res) => {
+router.post('/add-task', async (req, res) => {
     const {
         taskname,
         id
@@ -65,7 +65,7 @@ router.post('/addtask', async (req, res) => {
     }
 });
 
-router.post('/deleteasset', async (req, res) => {
+router.post('/delete-asset', async (req, res) => {
     const {
         assetid
     } = req.body;
@@ -80,7 +80,7 @@ router.post('/deleteasset', async (req, res) => {
         }));
 });
 
-router.post('/deletetask', async (req, res) => {
+router.post('/delete-task', async (req, res) => {
     const {
         taskid
     } = req.body;
@@ -95,7 +95,7 @@ router.post('/deletetask', async (req, res) => {
         }));
 });
 
-router.post('/deleteworker', async (req, res) => {
+router.post('/delete-worker', async (req, res) => {
     const {
         workerid
     } = req.body;
@@ -110,12 +110,12 @@ router.post('/deleteworker', async (req, res) => {
         }));
 });
 
-router.get('/allassets', async (req, res) => {
+router.get('/all-assets', async (req, res) => {
     const assets = assetModel.find();
     res.json(assets);
 });
 
-router.get('/mytask', async (req, res) => {
+router.get('/my-task', async (req, res) => {
     const {
         workerid
     } = req.body;
